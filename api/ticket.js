@@ -1,20 +1,21 @@
 export default function handler(req, res) {
-  const targetDate = new Date('2026-06-24T00:00:00-05:00'); // Hora Colombia
+  const targetDate = new Date('2026-06-24T00:00:00-05:00'); // Fecha en Bogotá
   const now = new Date();
 
-  // URL real de la imagen final del regalo
+  // ✅ Solo una constante IMAGE_URL
   const IMAGE_URL = 'https://regalo-cumple-natas.vercel.app/Tiquete_regalo.png';
 
   if (now >= targetDate) {
-    // Redirige al regalo una vez llegue la fecha
+    // ✅ Redirige al regalo cuando llegue la fecha
     return res.writeHead(302, { Location: IMAGE_URL }).end();
   } else {
-    // Página antes del día
+    // ✅ Solo un mensaje (tu texto bonito 💗)
     const mensaje = `
       <h2>Tu regalo se revelará el 24 de junio 2026 a partir de la media noche.</h2>
-      <p>Te encantará... Ten paciencia... Te amo <span class="corazon">💗</span></p>
+      <p>Te encantará... Ten paciencia... Te Amo <span class="corazon">💗</span></p>
     `;
 
+    // ✅ HTML estilizado
     return res.status(200).send(`
       <!doctype html>
       <html>
@@ -53,15 +54,3 @@ export default function handler(req, res) {
               to { opacity: 1; transform: translateY(0); }
             }
             @keyframes latido {
-              0%, 100% { transform: scale(1); }
-              50% { transform: scale(1.3); }
-            }
-          </style>
-        </head>
-        <body>
-          <div>${mensaje}</div>
-        </body>
-      </html>
-    `);
-  }
-}
