@@ -6,8 +6,10 @@ export default function handler(req, res) {
   const IMAGE_URL = 'https://regalo-cumple-natas.vercel.app/Tiquete_regalo.png';
 
   if (now >= targetDate) {
+    // Redirige a la imagen después del 24 de junio
     return res.writeHead(302, { Location: IMAGE_URL }).end();
   } else {
+    // Muestra el mensaje antes de la fecha
     const mensaje = 'Estará disponible únicamente para el 24 de junio 2026 desde la media noche';
     return res.status(200).send(`
       <!doctype html>
@@ -17,7 +19,7 @@ export default function handler(req, res) {
           <meta name="viewport" content="width=device-width,initial-scale=1">
           <title>🎁 Sorpresa</title>
         </head>
-        <body style="display:flex;align-items:center;justify-content:center;height:100vh;font-family:Arial;text-align:center;">
+        <body style="display:flex;align-items:center;justify-content:center;height:100vh;font-family:Arial;text-align:center;background-color:#f8f9fa;">
           <div>
             <h2>${mensaje}</h2>
             <p>Falta poco, mi amor 💛</p>
@@ -27,4 +29,3 @@ export default function handler(req, res) {
     `);
   }
 }
-
