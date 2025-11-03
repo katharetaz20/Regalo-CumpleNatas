@@ -12,20 +12,19 @@ export default function handler(req, res) {
     // Muestra el mensaje antes de la fecha
     const mensaje = 'Estará disponible únicamente para el 24 de junio 2026 desde la media noche';
     return res.status(200).send(`
-      <!doctype html>
-      <html>
-        <head>
-          <meta charset="utf-8">
-          <meta name="viewport" content="width=device-width,initial-scale=1">
-          <title>🎁 Sorpresa</title>
-        </head>
-        <body style="display:flex;align-items:center;justify-content:center;height:100vh;font-family:Arial;text-align:center;background-color:#f8f9fa;">
-          <div>
-            <h2>${mensaje}</h2>
-            <p>Falta poco, mi amor 💛</p>
-          </div>
-        </body>
-      </html>
-    `);
-  }
-}
+  <!doctype html>
+  <html>
+    <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <title>🎁 Sorpresa</title>
+    </head>
+    <body style="display:flex;align-items:center;justify-content:center;height:100vh;font-family:Arial;text-align:center;background-color:#fff0f6;">
+      <div>
+        <h2 style="color:#e91e63;">Tu regalo se revelará el 24 de junio 2026 a partir de la media noche.</h2>
+        <p style="font-size:18px;color:#555;">Te encantará... Ten paciencia...</p>
+        <p style="font-size:20px;color:#e91e63;font-weight:bold;">Te Amo 💗</p>
+      </div>
+    </body>
+  </html>
+`);
