@@ -1,8 +1,9 @@
 {
-  "name": "regalo-cumple-natas",
-  "version": "1.0.0",
-  "type": "module",
-  "scripts": {
-    "start": "vercel dev"
-  }
+  "redirects": [
+    {
+      "source": "/",
+      "destination": "/api/ticket",
+      "permanent": false
+    }
+  ]
 }
