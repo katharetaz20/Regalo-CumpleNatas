@@ -1,9 +1,8 @@
 {
-  "version": 2,
-  "builds": [
-    { "src": "api/ticket.js", "use": "@vercel/node" }
-  ],
-  "routes": [
-    { "src": "/api/ticket", "dest": "/api/ticket.js" }
-  ]
+  "name": "regalo-cumple-natas",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "start": "vercel dev"
+  }
 }
