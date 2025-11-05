@@ -2,59 +2,79 @@ export default function handler(req, res) {
   const targetDate = new Date('2026-06-24T00:00:00-05:00'); // Fecha en Bogotá
   const now = new Date();
 
-  const IMAGE_URL = 'https://regalo-cumple-natas.vercel.app/Tiquete_regalo.png'; // URL final
+  const IMAGE_URL = 'https://regalo-cumple-natas.vercel.app/Tiquete_regalo.png'; // Tu imagen real
 
   if (now >= targetDate) {
-    res.writeHead(302, { Location: IMAGE_URL });
-    res.end();
+    // Redirige a la imagen del regalo
+    return res.writeHead(302, { Location: IMAGE_URL }).end();
   } else {
-    res.status(200).send(`
+    // Muestra el mensaje y el conteo
+    const mensaje = 'Estará disponible únicamente para el 24 de junio de 2026 desde la medianoche';
+    return res.status(200).send(`
       <!doctype html>
       <html lang="es">
         <head>
-          <meta charset="utf-8" />
-          <meta name="viewport" content="width=device-width, initial-scale=1" />
-          <title>🎁 Sorpresa</title>
+          <meta charset="utf-8">
+          <meta name="viewport" content="width=device-width,initial-scale=1">
+          <title>🎁 Sorpresa para Nata 💛</title>
           <style>
             body {
-              margin: 0;
               display: flex;
               flex-direction: column;
-              justify-content: center;
               align-items: center;
+              justify-content: center;
               height: 100vh;
+              background: #000;
+              color: white;
               font-family: 'Poppins', sans-serif;
-              background: linear-gradient(180deg, #ffe6f0, #fff5fa);
-              color: #4a4a4a;
               text-align: center;
             }
-
             h2 {
-              color: #e75480;
-              font-size: 1.8em;
-              margin-bottom: 0.5em;
+              font-size: 1.6rem;
+              margin-bottom: 10px;
             }
-
-            p {
-              color: #555;
-              font-size: 1.2em;
-              margin: 0.5em 0;
-            }
-
             #countdown {
-              font-size: 1.4em;
-              color: #e75480;
-              font-weight: bold;
-              margin-top: 1em;
+              font-size: 1.4rem;
+              margin-top: 8px;
             }
-
             .heart {
-              width: 60px;
-              height: 60px;
-              position: relative;
-              transform: rotate(-45deg);
+              color: red;
+              font-size: 50px;
               animation: beat 1s infinite;
-              margin-top: 1.5em;
+              margin-top: 15px;
             }
+            @keyframes beat {
+              0%, 100% { transform: scale(1); }
+              50% { transform: scale(1.3); }
+            }
+          </style>
+        </head>
+        <body>
+          <h2>${mensaje}</h2>
+          <div id="countdown"></div>
+          <div class="heart">❤️</div>
 
-            .heart::before, .heart::after {
+          <script>
+            const targetDate = new Date('2026-06-24T00:00:00-05:00');
+            function updateCountdown() {
+              const now = new Date();
+              const diff = targetDate - now;
+              if (diff <= 0) {
+                window.location.href = '${IMAGE_URL}';
+                return;
+              }
+              const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+              const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+              const minutes = Math.floor((diff / (1000 * 60)) % 60);
+              const seconds = Math.floor((diff / 1000) % 60);
+              document.getElementById('countdown').innerText =
+                \`\${days}d \${hours}h \${minutes}m \${seconds}s\`;
+            }
+            setInterval(updateCountdown, 1000);
+            updateCountdown();
+          </script>
+        </body>
+      </html>
+    `);
+  }
+}
