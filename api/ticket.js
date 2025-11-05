@@ -1,8 +1,7 @@
 export default function handler(req, res) {
   const targetDate = new Date('2026-06-24T00:00:00-05:00'); // Fecha en Bogotá
   const now = new Date();
-
-  // 👇 Usa SOLO una variable para la imagen
+  
   const IMAGE_URL = 'https://regalo-cumple-natas.vercel.app/Tiquete_regalo.png';
 
   if (now >= targetDate) {
@@ -27,7 +26,7 @@ export default function handler(req, res) {
               height: 100vh;
               font-family: 'Arial', sans-serif;
               text-align: center;
-              background-color: #fff5fa;
+              background: linear-gradient(180deg, #fff5fa 0%, #ffeaf4 100%);
               color: #444;
               flex-direction: column;
             }
