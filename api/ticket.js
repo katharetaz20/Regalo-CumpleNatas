@@ -1,12 +1,12 @@
 export default async function handler(req, res) {
-  const targetDate = new Date('2026-06-24T00:00:00-05:00'); // Fecha en Bogotá
+  const targetDate = new Date('2025-12-24T00:00:00-05:00'); // Fecha en Bogotá
   const now = new Date();
   const IMAGE_URL = 'https://regalo-cumple-natas.vercel.app/Tiquete_regalo.png'; // Tu imagen final
 
   if (now >= targetDate) {
     return res.writeHead(302, { Location: IMAGE_URL }).end();
   } else {
-    const mensaje = '✨ Estará disponible el 24 de junio de 2026, desde la medianoche ✨';
+    const mensaje = '✨ Estará disponible el 24 de Diciembre de 2025, desde la medianoche ✨';
     return res.status(200).send(`
       <!doctype html>
       <html lang="es">
@@ -100,4 +100,5 @@ export default async function handler(req, res) {
     `);
   }
 }
+
 
