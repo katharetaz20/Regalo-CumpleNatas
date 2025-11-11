@@ -77,7 +77,7 @@ export default async function handler(req, res) {
           <p>Falta poquito, mi amor 💛</p>
 
           <script>
-            const targetDate = new Date('2026-06-24T00:00:00-05:00');
+            const targetDate = new Date('2025-12-24T00:00:00-05:00');
             function updateCountdown() {
               const now = new Date();
               const diff = targetDate - now;
@@ -100,5 +100,6 @@ export default async function handler(req, res) {
     `);
   }
 }
+
 
 
